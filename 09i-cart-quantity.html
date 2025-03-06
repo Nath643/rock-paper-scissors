@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cart Quantity - 9i</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <button onclick="
+      displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+    ">Show Quantity</button>
+
+    <button onclick="
+      // cartQuantity = cartQuantity + 1;
+      updateCartQuantity('+', 1)
+    ">Add to Cart</button>
+
+    <button onclick="
+      // cartQuantity = cartQuantity + 2;
+      updateCartQuantity('+', 2)
+    ">+ 2</button>
+
+    <button onclick="
+      updateCartQuantity('+', 3)
+    ">+ 3</button>
+
+    <button onclick="
+      updateCartQuantity('+', 4)
+    ">+ 4</button>
+
+    <button onclick="
+      updateCartQuantity('+', 5)
+    ">+ 5</button>
+
+    <button onclick="
+      updateCartQuantity('-', 1)
+    ">Remove From Cart</button>
+
+    <button onclick="
+      updateCartQuantity('-', 2)
+    ">- 2</button>
+
+    <button onclick="
+      updateCartQuantity('-', 3)
+    ">- 3</button>
+
+    <button onclick="
+      cartQuantity = 0;
+      displayQuantity.innerHTML = `Cart was reset. Cart Quantity: ${cartQuantity}`;
+      localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+    ">Reset Cart</button>
+
+    <p class="js-display-quantity"></p>
+
+    <script> 
+      let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
+
+      let displayQuantity = document.querySelector('.js-display-quantity');
+      displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+
+      function updateCartQuantity(plusOrMinus, amount) {
+        if (plusOrMinus === '-') {   
+          cartQuantity -= amount;  
+          if (cartQuantity < 0) {
+            cartQuantity = 0;
+            alert('not enough items in cart');
+            displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+            localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+            return;
+          }
+          displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+          localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+        } else if (plusOrMinus === '+') {
+          cartQuantity += amount;
+          if (cartQuantity > 10) {
+            cartQuantity = 10;
+            alert('the cart is full');
+            displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+            localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+            return;
+          }
+          displayQuantity.innerHTML = `Cart Quantity: ${cartQuantity}`;
+          localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+        }
+      }        
+      
+
+      /*
+      const product = {
+        name: 'basketball',
+        price: 2095
+      };
+      console.log(product);
+      product.price += 500;
+      console.log(product);
+      
+      console.log(product['delivery-time'] = '3 days');
+
+      const productOne = {
+        name: 'basketball',
+        price: 2015
+      };
+      const productTwo = {
+        name: 'basketball',
+        price: 2035
+      };
+      function comparePrice(product1, product2) {
+        if (product1.price < product2.price) {
+          return product1;
+        } else if (product2.price < product1.price) {
+          return product2;
+        }
+      }
+      console.log(comparePrice(productOne, productTwo));
+
+      function isSameProduct(product1, product2) {
+        if (product1.name === product2.name && product1.price === product2.price) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+      console.log(isSameProduct(productOne, productTwo));
+      */
+    </script>
+  </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Objects</title>
+  </head>
+  <body>
+    <script> 
+      /*
+      const product = {
+        name: 'socks',
+        price: 1090
+      };
+      console.log(typeof product); // an object is just another type of value that can be stored in a variable
+      console.log(product.name);
+      console.log(product.price);
+
+      product.name = 'cotton socks';
+      console.log(product);
+
+      product.newProperty = true;
+      console.log(product);
+
+      delete product.newProperty;
+      console.log(product);
+      
+
+      const product2 = {
+        name: 'shirt',
+        'delivery-time': '1 day', // if there is only a string between the square brackets, they are optional, but the key 'delivery-time' has a dash, which is a special character, so this key needs to be in quotes, $ and _ are allowed without quotes.
+        rating: { // object within an object = a nested object
+          stars: 4.5,
+          count: 87
+        },
+        fun: function function1() {
+          console.log('function inside object'); // a function is just another type of value. A function inside an onject is a method.
+        }
+      };
+
+      console.log(product2);
+      console.log(product2['name']); // this does the same as dot notation for getting the value of a given property out of an object. This lets us use properties that usually don't work with dot notation
+      // console.log(product2.delivery-time); - javascript thinks the - is a minus
+      console.log(product2['delivery-time']); // we can use anything that results in a value between the square brackers. Normally we use dot notation as its shorter and easier to read. 
+
+      console.log(product2.rating.count);
+      product2.fun();
+
+      console.log(typeof console.log);
+
+      console.log(JSON.stringify(product2));
+
+      const jsonString = JSON.stringify(product2);
+      console.log(JSON.parse(jsonString));
+      */
+
+      console.log('hello'.length); // other values like strings have properties as well as objects (.length). Also true of other value like numbers and booleans, it does not work with null/undefined
+      console.log('hello'.toUpperCase()); // other values like strings also have methods. This is because of auto-boxing, JS puts this string in a special object, with properties and methods
+
+      const object1 = { // the object itself is not a variable stored in the computer's memory, it just gets a reference that points to the location in the memory where the things in the object are stored, like a shortcut on taskbar, it points to where the actual file/folder is stored
+        message: 'hello'
+      };
+
+      const object2 = object1; // this only makes a copy of the reference 'object1', not the object. This makes JS more efficient. object2 and object1 point to the same object in the memory
+      object1.message = 'good job';
+      console.log(object1); // it can be changed even though object1 was created with const. Const does prevent us from changing the reference in the variable, but not from reaching into the reference and changing the object it's pointing to.
+      console.log(object2); // we only changed the message property for object1 but it was also changed for object2
+
+      const object3 = {
+        message: 'good job'
+      };
+      console.log(object3 === object1); // this compares the references (the place in memory that is being refered to), not the values inside - false.
+      console.log(object2 === object1); // both point to the same object in the memory - true.
+
+      const object4 = {
+        message: 'good job', 
+        price: 799
+      };
+      // const message = object4.message;
+      const { message, price } = object4; // this shortcut is called destructuring (equivalent to the line of code above)
+      console.log(message);
+      console.log(price);
+
+      const object5 = {
+        // message: message
+        message, // this is the shorthand property (it inputs the variable from above called message), in the same way as the above line of code.
+        /*method: function function1() {
+          console.log('method');
+        }*/
+        method() {
+          console.log('method'); // this way of creating the method does the same as the way of creating it above. This is called the shorthand method syntax
+        }
+      };
+      console.log(object5);
+      object5.method();
+    </script>
+  </body>
+</html>

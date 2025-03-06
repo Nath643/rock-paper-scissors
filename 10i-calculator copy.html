@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator Copy - 10i</title>
+
+    <link rel="stylesheet" href="styles/10i-calculator-copy.css">
+  </head>
+  <body>
+    <p class="js-calculator-screen calculator-screen"></p>
+
+    <p>
+      <button onclick="
+        updateCalculation('1');
+      " class="calculator-button gray-button">1</button>
+      <button onclick="
+        updateCalculation('2');
+      " class="calculator-button gray-button">2</button>
+      <button onclick="
+        updateCalculation('3');
+      " class="calculator-button gray-button">3</button>
+      <button onclick="
+        updateCalculation(' + ');
+      " class="calculator-button orange-button">+</button>
+    </p>
+
+    <p>
+      <button onclick="
+        updateCalculation('4');
+      " class="calculator-button gray-button">4</button>
+      <button onclick="
+        updateCalculation('5');
+      " class="calculator-button gray-button">5</button>
+      <button onclick="
+        updateCalculation('6');
+      " class="calculator-button gray-button">6</button>
+      <button onclick="
+        updateCalculation(' - ');
+      " class="calculator-button orange-button">-</button>
+    </p>
+
+    <p>
+      <button onclick="
+        updateCalculation('7');
+      " class="calculator-button gray-button">7</button>
+      <button onclick="
+        updateCalculation('8');
+      " class="calculator-button gray-button">8</button>
+      <button onclick="
+        updateCalculation('9');
+      " class="calculator-button gray-button">9</button>
+      <button onclick="
+        updateCalculation(' * ');
+      " class="calculator-button orange-button">*</button>
+    </p>
+
+    <p>
+      <button onclick="
+        updateCalculation('0');
+      " class="calculator-button gray-button">0</button>
+      <button onclick="
+        updateCalculation('.');
+      " class="calculator-button gray-button">.</button>
+      <button onclick="
+        calculation = eval(calculation); // eval() converts the calculation string into a actual maths
+        /*
+        if (!calculation) {
+          localStorage.removeItem('calculation');
+          calculation = '';
+        } else {
+          localStorage.setItem('calculation', JSON.stringify(calculation));
+        }
+        */
+        displayCalculation();
+        localStorage.setItem('calculation', calculation);
+      " class="calculator-button gray-button">=</button>
+      <button onclick="
+        updateCalculation(' / ');
+      " class="calculator-button orange-button">/</button>
+    </p>
+
+    <button onclick="
+      /*
+      localStorage.removeItem('calculation');
+      calculation = '';
+      calculatorScreen.innerHTML = '';
+      */
+      calculation = '';
+      displayCalculation();
+      localStorage.setItem('calculation', calculation);
+    " class="calculator-button gray-button clear-button">Clear</button>
+
+    <script src="scripts/10i-calculator-copy.js"></script>
+  </body>
+</html>

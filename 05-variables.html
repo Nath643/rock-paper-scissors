@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Variables</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <script> 
+      let variable1 = 3;
+      console.log(variable1);
+
+      const calculation = 2 + 2;
+      console.log(calculation);
+
+      console.log(calculation + 2);
+
+      const result = calculation + 2;
+      console.log(result);
+
+      const message = 'hello world';
+      console.log(message); console.log(';');
+
+      variable1 = 5;
+      console.log(variable1);
+
+      variable1 = variable1 + 1;
+      console.log(variable1);
+
+
+      const variable2 = 3; // this is a varible whose valuable cannot be changed. Use this by default, only use let when you will be changing the variable.
+
+      var variable3 = 3; // var does the same as let, but has some issues. This is outdated and replaced by let. It doesn't follow the rules of scope (variable created in curly brackets are only accissible in the curly brackets)
+
+      console.log(typeof variable3);
+      console.log(typeof message);
+    </script>
+  </body>
+</html>

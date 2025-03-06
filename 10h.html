@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10h</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+
+      .subscribe-button {
+        border: none;
+        border-radius: 18px;
+        background-color: black;
+        color: white;
+        padding: 10px 15px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-bottom: 50px;
+      }
+
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+
+      .cost-input {
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calculate-button {
+        background-color: green;
+        color: white;
+        font-size: 15px;
+        padding: 12px 15px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .red-text {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Youtube Subscribe Button</p>
+    <button onclick="
+      subscribe();
+    " class="js-subscribe-button subscribe-button">
+      Subscribe
+    </button>
+
+    <p>Amazon Shipping Calculator</p>
+    <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="handleCostKeyDown(event)">
+    <button onclick="
+      calculateTotal();
+    " class="calculate-button">Calculate</button>
+    <p class="js-total-cost"></p>
+
+    <script> 
+      String(25);
+      console.log('25' - 5); // if a string only contains a number and we do a maths function on it like - * /, it will be converted to a number. 
+      console.log('25' + 5); // It doesn't work for adding.
+
+      window.document
+      window.console.log('window');
+      window.alert
+
+      function handleCostKeyDown(event) {
+        if (event.key === 'Enter') {
+          calculateTotal();
+        }
+      }
+
+      function calculateTotal() {
+        const inputElement = document.querySelector('.js-cost-input'); // when we get a value from the dom it will be a string
+        let cost = Number(inputElement.value); // this is how to get the text inside an input element because it doesn't have a closing tag with text between the opening and closing tags. The number function converts things to number.
+
+        if (cost > 0 && cost < 30) {
+          cost += 10;
+          document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+          document.querySelector('.js-total-cost').classList.remove('red-text');
+        } else if (cost < 0) {
+          document.querySelector('.js-total-cost').innerHTML = `Error: cost cannot be less than $0`;
+          document.querySelector('.js-total-cost').classList.add('red-text');
+        }
+        else if (cost > 30) {
+          document.querySelector('.js-total-cost').innerHTML = `Error: cost cannot be more than $30`;
+          document.querySelector('.js-total-cost').classList.add('red-text');
+        }
+      }
+
+      function subscribe() {
+        const buttonElement = document.querySelector('.js-subscribe-button');
+
+        if (buttonElement.innerText === 'Subscribe') { // inner text gets the text inside an element without the spaces, innerhtml gets the spaces
+          buttonElement.innerText = 'Subscribed';
+          buttonElement.classList.add('is-subscribed'); // when the button is clicked, this class is added to it
+        } else if (buttonElement.innerText === 'Subscribed') {
+          buttonElement.innerText = 'Subscribe';
+          buttonElement.classList.remove('is-subscribed');
+        }
+      }
+    </script>
+  </body>
+</html>

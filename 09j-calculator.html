@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator Copy - 9j</title>
+  </head>
+  <body>
+    <p class="js-calculator-screen"></p>
+
+    <p>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('1');
+      ">1</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('2');
+      ">2</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('3');
+      ">3</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation(' + ');
+      ">+</button>
+    </p>
+
+    <p>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('4');
+      ">4</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('5');
+      ">5</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('6');
+      ">6</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation(' - ');
+      ">-</button>
+    </p>
+
+    <p>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('7');
+      ">7</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('8');
+      ">8</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('9');
+      ">9</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation(' * ');
+      ">*</button>
+    </p>
+
+    <p>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation('0');
+      ">0</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation(' . ');
+      ">.</button>
+      <button onclick="
+        eval(calculation); // eval() converts the calculation string into a actual maths
+        calculation = eval(calculation);
+        if (!calculation) {
+          localStorage.removeItem('calculation');
+          calculation = '';
+        } else {
+          localStorage.setItem('calculation', JSON.stringify(calculation));
+        }
+        calculatorScreen.innerHTML = calculation;
+      ">=</button>
+      <button onclick="
+        calculatorScreen.innerHTML = updateCalculation(' / ');
+      ">/</button>
+    </p>
+
+    <button onclick="
+      localStorage.removeItem('calculation');
+      calculation = '';
+      calculatorScreen.innerHTML = '';
+    ">Clear</button>
+
+    <script>
+      let calculation = JSON.parse(localStorage.getItem('calculation')) || ''; 
+
+      let calculatorScreen = document.querySelector('.js-calculator-screen');
+      calculatorScreen.innerHTML = calculation || '';
+
+      function updateCalculation(character) {
+        calculation += character;
+        localStorage.setItem('calculation', JSON.stringify(calculation));
+        return calculation;
+      }
+    </script>
+  </body>
+</html>
