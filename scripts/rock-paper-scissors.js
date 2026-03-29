@@ -1,31 +1,17 @@
-let score = JSON.parse(localStorage.getItem('score')) || { // we use the name we used when inputting the item into local storage 'score'
+let score = JSON.parse(localStorage.getItem('score')) || { 
   wins: 0,
-  losses: 0, // this code does the same as the code below commented out
+  losses: 0, 
   ties: 0
 };
 
 updateScoreElement();
 
-/*
-if (!score) { // !score does the same as score === null
-  score = {
-    wins: 0,
-    losses: 0,
-    ties: 0
-  };
-}
-*/
-
 let isAutoPlaying = false;
 let intervalId;
 
-// const autoPlay = () => {
-
-// };
-
 function autoPlay() {
   if (!isAutoPlaying) {
-    intervalId = setInterval(() => { // set interval returns an ID each time 
+    intervalId = setInterval(() => { 
       const playerMove = pickComputerMove();
       playGame(playerMove);
     }, 1000);
@@ -58,7 +44,7 @@ document.querySelector('.js-auto-play-button').addEventListener('click', () => {
   autoPlay();
 });
 
-document.body.addEventListener('keydown', (event) => { // add event listener has the event object as a parameter in the function, like onkeydown which had the event object
+document.body.addEventListener('keydown', (event) => { 
   if (event.key === 'r') {
     playGame('rock');
   } else if (event.key === 'p') {
@@ -136,7 +122,7 @@ function playGame(playerMove) {
     score.ties++;
   }
 
-  localStorage.setItem('score', JSON.stringify(score)); // the first string is a name to access the value we save later, the second is the value being saved in local storage. Local storage only supports strings.
+  localStorage.setItem('score', JSON.stringify(score)); 
 
   updateScoreElement();
 
