@@ -155,11 +155,11 @@ function updateScoreElement() {
 }
 
 function pickComputerMove() {
-  const randomNumber = Math.random(); //generates a random number >= 0 and < 1
+  const randomNumber = Math.random();
 
-  let computerMove = ''; // any variable created inside {} brackets only exists in those brackets. Variables that can be accessed anywhere are global variables
+  let computerMove = ''; 
   
-  if (randomNumber >= 0 && randomNumber < 1 / 3) { // logical operators let us combine boolean values
+  if (randomNumber >= 0 && randomNumber < 1 / 3) { 
     computerMove = 'rock';
   } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
     computerMove = 'paper';
@@ -167,6 +167,5 @@ function pickComputerMove() {
     computerMove = 'scissors';
   }
 
-  return computerMove; // a return statament lets us get a value out of a function when we call the function. We can also return a calculation or a variable (which can solve the problem of scope with a variable created inside a function, or anything that results in a value. An empty return returns that value undefined. Using return ends the function, it returns back to where the function was called. 
-  // Returning a variable is preferable to using a gloabal variable to avoid naming conflicts
+  return computerMove; 
 }
